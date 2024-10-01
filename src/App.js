@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import RestaurantList from './components/restaurants/RestaurantList';  // Restaurant map component
+import NationalityAnalysisDashboard from './components/random/NationalityAnalysisDashboard';  // New dashboard component
+import NavigationBar from './components/general/Navbar';  // Navbar
+import InteractiveMaps from './components/demographic_map/InteractiveMaps';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <NavigationBar />
+        <div className="container mt-4">
+          <Routes>
+            <Route path="/" element={<RestaurantList />} />  {/* Default route */}
+            <Route path="/nationality-analysis" element={<NationalityAnalysisDashboard />} />  {/* Dashboard route */}
+            <Route path="/interactive-maps" element={<InteractiveMaps />} />  {/* Dashboard route */}
+
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
